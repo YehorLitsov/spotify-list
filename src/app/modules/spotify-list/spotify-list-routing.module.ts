@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {SpotifyListComponent} from './spotify-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('src/app/modules/main-app/main-app.module').then(m => m.MainAppModule)
+    component: SpotifyListComponent,
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class SpotifyListRoutingModule { }
