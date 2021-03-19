@@ -14,11 +14,11 @@ const routes: Routes = [
       },
       {
         path: 'spotify-list',
-        loadChildren: () => import('src/app/modules/spotify-list/spotify-list.module').then(m => m.SpotifyListModule)
+        loadChildren: () => import('src/app/modules/core/spotify-list/spotify-list.module').then(m => m.SpotifyListModule)
       },
       {
         path: 'favourite-list',
-        loadChildren: () => import('src/app/modules/favourite-list/favourite-list.module').then(m => m.FavouriteListModule)
+        loadChildren: () => import('src/app/modules/core/favourite-list/favourite-list.module').then(m => m.FavouriteListModule)
       }
     ]
   }
