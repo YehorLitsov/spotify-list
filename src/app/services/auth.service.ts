@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
+  // TODO remove
   constructor(private http: HttpClient) { }
 
   authorization(client_id: string, response_type: string): Observable<any> {

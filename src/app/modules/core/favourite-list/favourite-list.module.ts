@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { FavouriteListRoutingModule } from './favourite-list-routing.module';
 import { FavouriteListComponent } from './favourite-list.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpInterceptorInterceptor} from '../../../interceptors/http-interceptor.interceptor';
 
 
 @NgModule({
@@ -11,6 +13,9 @@ import { FavouriteListComponent } from './favourite-list.component';
     CommonModule,
     FavouriteListRoutingModule
   ],
-  exports: [FavouriteListComponent]
+  exports: [FavouriteListComponent],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorInterceptor, multi: true}
+  ]
 })
 export class FavouriteListModule { }
