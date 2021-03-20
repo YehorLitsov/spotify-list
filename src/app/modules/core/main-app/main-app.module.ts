@@ -14,5 +14,6 @@ import {CustomUiLibModule} from '../../../custom-ui-lib/custom-ui-lib.module';
     CustomUiLibModule,
   ],
   exports: [MainAppComponent],
+  providers: []
 })
 export class MainAppModule { }
