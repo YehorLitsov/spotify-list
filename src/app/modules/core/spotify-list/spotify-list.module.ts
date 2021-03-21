@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SpotifyListRoutingModule } from './spotify-list-routing.module';
 import { SpotifyListComponent } from './spotify-list.component';
 import {SpotifyDataApiService} from '../../../services/spotify-data-api.service';
+import {MaterialModule} from '../../material/material.module';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import {SpotifyDataApiService} from '../../../services/spotify-data-api.service'
   imports: [
     CommonModule,
     SpotifyListRoutingModule,
+    MaterialModule,
   ],
   exports: [SpotifyListComponent],
   providers: [

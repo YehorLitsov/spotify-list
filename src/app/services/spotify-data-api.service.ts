@@ -7,20 +7,17 @@ export class SpotifyDataApiService {
 
   constructor(private http: HttpClient) { }
 
-  getTracks(): Observable<any> {
-    const limit = 10;
-    return this.http.get(`?limit=${limit}`);
+  getRandomSearch(): string {
+    // A list of all characters that can be chosen.
+    const characters = 'abcdefghijklmnopqrstuvwxyz';
+
+    // Gets a random character from the characters string.
+    const randomCharacter = characters.charAt(Math.floor(Math.random() * characters.length));
+
+    return randomCharacter;
   }
 
-  getNewReleases(limit = 10, offset = 0): Observable<any> {
-    return this.http.get(`https://api.spotify.com/v1/browse/new-releases?limit=${limit}&offset=${offset}`);
+  getRandomTracks(limit = 10, offset = 0): Observable<any> {
+    return this.http.get(`https://api.spotify.com/v1/search?type=track&q=${this.getRandomSearch()}&limit=${limit}&offset=${offset}`);
   }
-
-  // getNewReleases(limit = 10, offset = 0): Observable<any> {
-  //   const accessToken = localStorage.getItem('access_token');
-  //   const headers = new HttpHeaders({
-  //     'Authorization' : 'Bearer ' + accessToken
-  //   })
-  //   return this.http.get(`https://api.spotify.com/v1/browse/new-releases?limit=${limit}&offset=${offset}`, {headers});
-  // }
 }
