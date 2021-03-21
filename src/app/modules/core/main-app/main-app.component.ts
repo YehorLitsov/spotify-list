@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SpotifyApiService} from '../../../services/spotify-api.service';
+import {SpotifyDataApiService} from '../../../services/spotify-data-api.service';
 
 @Component({
   selector: 'app-main-app',
@@ -8,13 +8,12 @@ import {SpotifyApiService} from '../../../services/spotify-api.service';
 })
 export class MainAppComponent implements OnInit {
 
-  constructor(private spotifyApiService: SpotifyApiService) { }
+  constructor(private spotifyDataApiService: SpotifyDataApiService) { }
 
   ngOnInit(): void {
-    this.getToken();
   }
 
-  getToken() {
-    this.spotifyApiService.authorizeAccessToken();
+  someEvent(): void {
+    this.spotifyDataApiService.getNewReleases().subscribe(data => {console.log(data)});
   }
 }

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MainAppRoutingModule } from './main-app-routing.module';
 import { MainAppComponent } from './main-app.component';
 import {CustomUiLibModule} from '../../../custom-ui-lib/custom-ui-lib.module';
+import {SpotifyDataApiService} from '../../../services/spotify-data-api.service';
 
 
 @NgModule({
@@ -14,6 +15,6 @@ import {CustomUiLibModule} from '../../../custom-ui-lib/custom-ui-lib.module';
     CustomUiLibModule,
   ],
   exports: [MainAppComponent],
-  providers: []
+  providers: [SpotifyDataApiService]
 })
 export class MainAppModule { }

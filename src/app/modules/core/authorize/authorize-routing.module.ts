@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {AuthorizeComponent} from './authorize.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('src/app/modules/core/authorize/authorize.module').then(m => m.AuthorizeModule)
+    component: AuthorizeComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AuthorizeRoutingModule { }
