@@ -1,0 +1,13 @@
+.main {
+  height: 60px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-content {
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}

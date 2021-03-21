@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { MainAppRoutingModule } from './main-app-routing.module';
 import { MainAppComponent } from './main-app.component';
-import {CustomUiLibModule} from '../../../custom-ui-lib/custom-ui-lib.module';
 import {SpotifyDataApiService} from '../../../services/spotify-data-api.service';
+import {MaterialModule} from '../../material/material.module';
 
 
 @NgModule({
@@ -12,7 +12,7 @@ import {SpotifyDataApiService} from '../../../services/spotify-data-api.service'
   imports: [
     CommonModule,
     MainAppRoutingModule,
-    CustomUiLibModule,
+    MaterialModule,
   ],
   exports: [MainAppComponent],
   providers: [SpotifyDataApiService]

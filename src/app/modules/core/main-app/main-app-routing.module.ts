@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {MainAppComponent} from './main-app.component';
+import {RouterUrls} from '../../../router-urls/router-urls';
 
 const routes: Routes = [
   {
@@ -13,11 +14,11 @@ const routes: Routes = [
         redirectTo: 'spotify-list'
       },
       {
-        path: 'spotify-list',
+        path: RouterUrls.spotifyList,
         loadChildren: () => import('src/app/modules/core/spotify-list/spotify-list.module').then(m => m.SpotifyListModule)
       },
       {
-        path: 'favourite-list',
+        path: RouterUrls.favourites,
         loadChildren: () => import('src/app/modules/core/favourite-list/favourite-list.module').then(m => m.FavouriteListModule)
       }
     ]

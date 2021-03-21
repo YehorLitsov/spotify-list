@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AuthorizeRoutingModule } from './authorize-routing.module';
 import { AuthorizeComponent } from './authorize.component';
-import {CustomUiLibModule} from '../../../custom-ui-lib/custom-ui-lib.module';
 import {SpotifyAuthApiService} from '../../../services/spotify-auth-api.service';
+import {MaterialModule} from '../../material/material.module';
 
 
 @NgModule({
@@ -12,7 +12,7 @@ import {SpotifyAuthApiService} from '../../../services/spotify-auth-api.service'
   imports: [
     CommonModule,
     AuthorizeRoutingModule,
-    CustomUiLibModule,
+    MaterialModule,
   ],
   exports: [AuthorizeComponent],
   providers: [SpotifyAuthApiService]

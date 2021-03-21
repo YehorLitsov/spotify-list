@@ -1,5 +1,8 @@
-<app-button title="Spotify List" [buttonClass]="'button-primary'" [routerLink]="'spotify-list'"></app-button>
-<app-button title="Favourite List" [buttonClass]="'button-secondary'" [routerLink]="'favourite-list'"></app-button>
-<app-button title="TEST REQUEST" [buttonClass]="'button-secondary'" (click)="someEvent()"></app-button>
+<section class="main">
+  <div class="main-content">
+    <button mdc-button raised *ngFor="let button of buttons" [routerLink]="button.link">{{button.label}}</button>
+  </div>
+</section>
+
 <router-outlet></router-outlet>
 
