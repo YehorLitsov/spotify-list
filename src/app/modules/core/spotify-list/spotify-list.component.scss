@@ -5,4 +5,20 @@
   width: 100vw;
   display: flex;
   justify-content: center;
+  &-label {
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    &.center {
+      justify-content: center;
+    }
+  }
+
+  .table {
+    tr {
+      td, th {
+
+      }
+    }
+  }
 }

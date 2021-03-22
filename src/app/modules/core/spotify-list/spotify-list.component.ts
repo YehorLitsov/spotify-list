@@ -1,26 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import {SpotifyDataApiService} from '../../../services/spotify-data-api.service';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {pluck, startWith, switchMap, tap} from 'rxjs/operators';
+import {SpotifyTracksResponseInterface} from '../../../interfaces/spotify-tracks-response.interface';
+import {SpotifyTrackInterface} from '../../../interfaces/spotify-track.interface';
 
 @Component({
   templateUrl: './spotify-list.component.html',
   styleUrls: ['./spotify-list.component.scss']
 })
 export class SpotifyListComponent implements OnInit {
-  desserts = [
-    {checked: false, name: 'Frozen yogurt', calories: 159, carbs: 24, protein: 4, comment: 'Super tasty'},
-    {checked: true, name: 'Ice cream sandwich', calories: 237, carbs: 37, protein: 4.3, comment: 'I like ice cream more'},
-    {checked: false, name: 'Eclair', calories: 262, carbs: 16, protein: 6, comment: 'New filling flavor'}
-  ];
-
-  tracks: any[];
+  updateTracks$ = new Subject();
+  tracks$: Observable<SpotifyTrackInterface[]> = this.updateTracks$.pipe(
+    startWith(() => null),
+    switchMap(() => this.spotifyDataApiService.getRandomTracks().pipe(pluck('tracks', 'items'))),
+  );
 
   constructor(private spotifyDataApiService: SpotifyDataApiService) { }
 
   ngOnInit(): void {
-    this.getSomeTracks();
+    this.updateTracks$.next();
   }
 
-  getSomeTracks(): void {
-    this.spotifyDataApiService.getRandomTracks().subscribe(spotifyTracks => {this.tracks = spotifyTracks});
+  addToFavourites(item: SpotifyTrackInterface): void {
+    let storedTracks = [];
+    storedTracks = JSON.parse(localStorage.getItem('liked_tracks')) || [];
+    storedTracks.push(item);
+    localStorage.setItem('liked_tracks', JSON.stringify(storedTracks));
   }
 }

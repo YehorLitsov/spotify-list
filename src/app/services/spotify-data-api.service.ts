@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {SpotifyTracksResponseInterface} from '../interfaces/spotify-tracks-response.interface';
 
 @Injectable()
 export class SpotifyDataApiService {
@@ -12,12 +13,11 @@ export class SpotifyDataApiService {
     const characters = 'abcdefghijklmnopqrstuvwxyz';
 
     // Gets a random character from the characters string.
-    const randomCharacter = characters.charAt(Math.floor(Math.random() * characters.length));
-
-    return randomCharacter;
+    return characters.charAt(Math.floor(Math.random() * characters.length));
   }
 
-  getRandomTracks(limit = 10, offset = 0): Observable<any> {
-    return this.http.get(`https://api.spotify.com/v1/search?type=track&q=${this.getRandomSearch()}&limit=${limit}&offset=${offset}`);
+  getRandomTracks(limit = 10, offset = 0): Observable<SpotifyTracksResponseInterface> {
+    return this.http
+      .get<SpotifyTracksResponseInterface>(`https://api.spotify.com/v1/search?type=track&q=${this.getRandomSearch()}&limit=${limit}&offset=${offset}`);
   }
 }
