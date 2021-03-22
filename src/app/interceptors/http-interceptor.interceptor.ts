@@ -6,8 +6,7 @@ import {
   HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {SpotifyAuthApiService} from '../services/spotify-auth-api.service';
-import {catchError, first, tap} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 import {Router} from '@angular/router';
 
 @Injectable()
@@ -25,8 +24,9 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
     return request;
   }
 
-  handleResponseError(errorResponse: HttpErrorResponse, request?: HttpRequest<unknown>, next?: HttpHandler): Observable<HttpEvent<unknown>> {
+  handleResponseError(errorResponse: HttpErrorResponse): Observable<HttpEvent<unknown>> {
     if (errorResponse.status === 401) {
+      localStorage.removeItem('access_token');
       this.router.navigate(['']);
     }
     return throwError(errorResponse);
@@ -36,7 +36,7 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
     request = this.setAuthToken(request);
 
     return next.handle(request).pipe(catchError((errorResponse: HttpErrorResponse) => {
-      return this.handleResponseError(errorResponse, request, next);
+      return this.handleResponseError(errorResponse);
     }));
   }
 }

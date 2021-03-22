@@ -17,6 +17,7 @@ import {SpotifyAuthApiService} from './services/spotify-auth-api.service';
     AppRoutingModule,
     HttpClientModule,
     MainAppModule,
+    HttpClientModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorInterceptor, multi: true},

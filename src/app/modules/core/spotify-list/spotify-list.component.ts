@@ -12,6 +12,8 @@ export class SpotifyListComponent implements OnInit {
     {checked: false, name: 'Eclair', calories: 262, carbs: 16, protein: 6, comment: 'New filling flavor'}
   ];
 
+  tracks: any[];
+
   constructor(private spotifyDataApiService: SpotifyDataApiService) { }
 
   ngOnInit(): void {
@@ -19,6 +21,6 @@ export class SpotifyListComponent implements OnInit {
   }
 
   getSomeTracks(): void {
-    this.spotifyDataApiService.getRandomTracks().subscribe(data => {console.log(data)});
+    this.spotifyDataApiService.getRandomTracks().subscribe(spotifyTracks => {this.tracks = spotifyTracks});
   }
 }
